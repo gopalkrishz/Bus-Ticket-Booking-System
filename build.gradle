@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+jar{
+    manifest{
+        attributes 'Main-Class':'org.example.Booking'
+    }
+    from{
+        configurations.runtimeClasspath.collect{it.isDirectory()?it:zipTree(it)}
+    }
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.postgresql:postgresql:42.7.1'
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'ch.qos.logback:logback-classic:1.2.5'
+}
+
+test {
+    useJUnitPlatform()
+}
