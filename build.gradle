@@ -5,6 +5,7 @@ plugins {
 jar{
     manifest{
         attributes 'Main-Class':'org.example.Booking'
+        duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     }
     from{
         configurations.runtimeClasspath.collect{it.isDirectory()?it:zipTree(it)}
