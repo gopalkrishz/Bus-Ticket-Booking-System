@@ -1,10 +1,27 @@
-<configuration>
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+<configuration status="WARN">
+    <!-- Appender for info messages -->
+    <appender name="INFO_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>src/main/resources/application.log</file> <!-- Info log file path -->
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+
+    <!-- Appender for debug messages -->
+    <appender name="DEBUG_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>src/main/resources/debug.log</file> <!-- Debug log file path -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger configuration -->
     <root level="info">
-        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="INFO_FILE" /> <!-- Use INFO_FILE appender for info messages -->
+      <!-- Use DEBUG_FILE appender for debug messages -->
+    </root>
+    <root level="debug">
+
+        <appender-ref ref="DEBUG_FILE"/>
     </root>
 </configuration>

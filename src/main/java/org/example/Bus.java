@@ -1,8 +1,16 @@
 package org.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 
+
+@Scope(scopeName = "prototype")
 public class Bus {
+    private static final Logger logger =  LoggerFactory.getLogger(Bus.class);
     int bus_no;
     String bus_name;
     boolean isAc;
@@ -27,8 +35,10 @@ public class Bus {
             if(capacityNow>noofseats){
                 capacityNow=capacityNow-noofseats;
                 System.out.println("seat booked successfully on the particular date :) "+ dateInput);
+                logger.info("hence the seat is booked successfully on the particular date"+dateInput);
             }else{
                 System.out.println("seat booking is not successful all seats are booked :( ");
+                logger.info("can't able to book seat  on the particular date"+dateInput);
             }
         }
     }

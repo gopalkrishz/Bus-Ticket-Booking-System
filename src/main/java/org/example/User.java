@@ -1,9 +1,13 @@
 package org.example;
 
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+@Scope(scopeName = "prototype")
 class NormalUser extends User{
 
     Boolean isNormalUser;
+
 
     public NormalUser(int passanger_no, String passanger_name, String email, long phone_no,String dateInput ,int no_of_seats,boolean isNormalUser) {
         super(passanger_no, passanger_name, email, phone_no,dateInput,no_of_seats);
@@ -15,6 +19,7 @@ class NormalUser extends User{
 
 
 }
+@Scope(scopeName = "prototype")
 class SuperUser extends User{
     Boolean isNormalUser;
 
@@ -36,6 +41,7 @@ class SuperUser extends User{
 
 
 }
+
 public class User {
 
     int passanger_no;
@@ -44,7 +50,24 @@ public class User {
     long phone_no;
     String dateInput;
     int no_of_seats;
-    public User(int passanger_no, String passanger_name,String email,long phone_no,String dateInput,int no_of_seats){
+
+    public String getDateInput() {
+        return dateInput;
+    }
+
+    public void setDateInput(String dateInput) {
+        this.dateInput = dateInput;
+    }
+
+    public int getNo_of_seats() {
+        return no_of_seats;
+    }
+
+    public void setNo_of_seats(int no_of_seats) {
+        this.no_of_seats = no_of_seats;
+    }
+
+    public User(int passanger_no, String passanger_name, String email, long phone_no, String dateInput, int no_of_seats){
         this.passanger_name=passanger_name;
         this.passanger_no=passanger_no;
         this.email=email;
